@@ -1,0 +1,11 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Saravanan Vijayappan",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "yargs": "4.7.1"
+  }
+}
