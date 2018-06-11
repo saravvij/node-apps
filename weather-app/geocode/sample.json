@@ -1,0 +1,85 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "123 Mission Street",
+               "short_name" : "123 Mission Street",
+               "types" : [ "premise" ]
+            },
+            {
+               "long_name" : "123",
+               "short_name" : "123",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Mission Street",
+               "short_name" : "Mission St",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "South Beach",
+               "short_name" : "South Beach",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "San Francisco",
+               "short_name" : "SF",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "San Francisco County",
+               "short_name" : "San Francisco County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "California",
+               "short_name" : "CA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "94105",
+               "short_name" : "94105",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "123 Mission Street, 123 Mission St, San Francisco, CA 94105, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 37.7920619,
+                  "lng" : -122.3941852
+               },
+               "southwest" : {
+                  "lat" : 37.7916218,
+                  "lng" : -122.3947376
+               }
+            },
+            "location" : {
+               "lat" : 37.7917688,
+               "lng" : -122.3944272
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.7931908302915,
+                  "lng" : -122.3931124197085
+               },
+               "southwest" : {
+                  "lat" : 37.7904928697085,
+                  "lng" : -122.3958103802915
+               }
+            }
+         },
+         "partial_match" : true,
+         "place_id" : "ChIJFar3YGSAhYARQYdD7EBrvjY",
+         "types" : [ "premise" ]
+      }
+   ],
+   "status" : "OK"
+}

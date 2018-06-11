@@ -1,33 +1,31 @@
-const request = require('request');
 const yargs = require('yargs');
+const geocode = require('./geocode/geocode.js');
+const weather = require('./weather/weather.js');
 
 const argv = yargs
-             .command('get', 'To get the address coordinates', {
-                address: {
-                    desc: 'Address of the location',
-                    command: true,
-                    alias: 'a'
-                } 
-             })
-             .help()
-             .argv;
+    .option('address', {
+        alias: 'a',
+        describe: 'Weather to fetch adress',
+        demandOption: true
+    })
+    .help()
+    .alias('a')
+    .argv;
 
 const command = argv._[0];
+const address = argv.address;
 
-if(command === 'get') {
-    const address = argv.address;
-    if(address){
-        const encodedAddr = encodeURIComponent(argv.address);
-        let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddr}`;
-        request(url, (error, response, body) => {
-            if(response.statusCode != 200) {
-                console.log("Error: Unable to get the address :  " + response.statusCode)
-                return;
+geocode.getAddress(address, (error, results) => {
+    if(error) {
+        console.log(error);
+    }else {
+        console.log(results);
+        weather.getWeather(results.latitude, results.longitude, (error, weatherResults) => {
+            if(error) {
+                console.log(error);
+            }else {
+                console.log(`It's currently ${weatherResults.temperature}F. It feels like ${weatherResults.apparentTemperature}F`);
             }
-            console.log(body);
-       })
-    }else{
-        console.log("Error: address is required");
+        });
     }
-    
-}
+});
