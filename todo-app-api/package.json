@@ -1,0 +1,11 @@
+{
+  "name": "todo-app-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "SaravananVijayappan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.1.5"
+  }
+}
