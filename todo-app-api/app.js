@@ -1,43 +1,26 @@
-const mangoose = require('mongoose');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-mangoose.Promise = global.Promise;
+const {mongoose} = require('./db/mongoose');
+const {Todo} = require('./models/Todo');
+const {User} = require('./models/User');
 
-mangoose.connect('mongodb://localhost:27017/todo');
+const app = express();
+app.use(bodyParser.json());
+app.use((req, res, next) => {
+    console.log(`Received new request path: ${req.path} body: ${req.body}`);
+    next();
+})
 
-/* const Todo = mangoose.model('Todo', {
-    text: {
-        type: String,
-        minlength: 1,
-        trim: true,
-        required: true
-    },
-    completed: {
-        type: Boolean,
-        default: null
-    },
-    completedAt: {
-        type: Number,
-        default: null
-    }
+app.post('/todos', (req, res) => {
+    const TodoDoc = new Todo(req.body);
+    TodoDoc.save()
+    .then( doc => res.status(201).send(doc))
+    .catch( e =>  {
+        console.log("Unable create new Todo", e)
+        res.status(400).send(`Error: Unable to create Todo. Details: ${e.message}`);
+    });
 });
 
-const groceryTodo = new Todo ( { text: 'Get grocery', completed: false, completedAt:123});
-groceryTodo.save()
-.then( (res)=> console.log(JSON.stringify(res, undefined, 2)) )
-.catch(err => console.log(err)); */
 
-const User = mangoose.model('user', {
-    email: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 1
-    }
-});
-
-const user1 = new User( {email: 'jon@gmail.com'});
-
-user1.save()
-.then( user => console.log(user))
-.catch( e => console.log("Unable to save user. ", e));
-
+app.listen(3000, () => console.log('Todo API service started and listening at port 3000'));
