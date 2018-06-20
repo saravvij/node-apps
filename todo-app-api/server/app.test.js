@@ -34,4 +34,22 @@ describe('Todo APIs', () => {
         }) 
     });
 
+    it('should not create Todo', (done) => {
+
+        request(app)
+        .post('/todos')
+        .send({ text: '' })
+        .expect(400)
+        .end( (err, res) => {
+            if(err) {
+                return done(err);
+            }
+            Todo.find( {text: ''})
+            .then( todo => {
+                expect(todo).toBeNull;
+                done();
+            }).catch(e => done(e));
+        });
+    });
+
 });
