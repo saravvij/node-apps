@@ -5,9 +5,13 @@
   "author": "SaravananVijayappan",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server/app.js",
+    "start": "node server/app.js",
+    "start-watch": "nodemon server/app.js",
     "test": "mocha **/*.test.js",
     "test-watch": "nodemon --exec \"mocha server/*.test.js\""
+  },
+  "engines": {
+    "node": "10.4.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
